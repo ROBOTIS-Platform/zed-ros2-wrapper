@@ -21,6 +21,7 @@
 #include <stdlib.h>
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/parameter_map.hpp>
+#include <rclcpp_components/node_factory.hpp>
 
 #include "zed_component.hpp"
 #include "zed_it_broadcaster.hpp"
@@ -60,11 +61,14 @@ int main(int argc, char* argv[]) {
     // namespace: zed - node_name: zed_node - intra-process communication: true
     std::string lcNamespace = "zed";
     std::string lcNodeName = "zed_node";
-    bool intraProcComm = false;
-
+    std::vector<std::string> args;
+    std::vector<rclcpp::Parameter> params = createParamsListFromYAMLs(argc, argv, lcNamespace, lcNodeName);
+    rclcpp::NodeOptions node_options;
+    node_options.arguments(args);
+    node_options.parameter_overrides(params);
     // ZED main component
     // Note: use the constructor to get node_name and namespace from the launch file
-    auto lc_node = std::make_shared<stereolabs::ZedCameraComponent>(lcNodeName, lcNamespace, intraProcComm);
+    auto lc_node = std::make_shared<stereolabs::ZedCameraComponent>(lcNodeName, lcNamespace, node_options);
     multiExec.add_node(lc_node->get_node_base_interface());
 
     // Overwrite the default values with the effective ones
@@ -74,7 +78,6 @@ int main(int argc, char* argv[]) {
     // This is useful to use the same parameter of the Lifecyle node in the IT and TF broadcasters even
     // if the node names are not the same (ROS2 requires that namespace+node_name in the YAML file match
     // namespace+node_name of the node where it is loaded)
-    std::vector<rclcpp::Parameter> params = createParamsListFromYAMLs(argc, argv, lcNamespace, lcNodeName);
 
     // Note: image topics published by the main component do not support the ROS standard for `camera_info`
     //       topics to be compatible with the `camera view` plugin of `RVIZ2`.
@@ -88,11 +91,7 @@ int main(int argc, char* argv[]) {
     //       and re-publish them using `image_transport`
     auto it_node = std::make_shared<stereolabs::ZedItBroadcaster>(
                        lcNodeName + "_it", lcNamespace, lcNodeName,
-                       context,
-                       std::vector<std::string>(),
-                       params,
-                       false,
-                       intraProcComm);
+                       node_options);
     multiExec.add_node(it_node->get_node_base_interface());
 
     // ZED TF broadcaster
@@ -101,11 +100,7 @@ int main(int argc, char* argv[]) {
     //       and re-publish them using `TransformBroadcaster`
     auto tf_node = std::make_shared<stereolabs::ZedTfBroadcaster>(
                        lcNodeName + "_tf", lcNamespace, lcNodeName,
-                       context,
-                       std::vector<std::string>(),
-                       params,
-                       false,
-                       intraProcComm);
+                       node_options);
     multiExec.add_node(tf_node->get_node_base_interface());
 
     multiExec.spin();

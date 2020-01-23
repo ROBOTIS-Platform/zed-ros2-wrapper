@@ -7,8 +7,8 @@ namespace stereolabs {
     ZedTfBroadcaster::ZedTfBroadcaster(const std::string& node_name /*= "zed_node_tf"*/,
                                        const std::string& ros_namespace /*= "zed"*/,
                                        const std::string& main_node /*= "zed_node"*/,
-                                       bool intra_process_comms /*= true*/)
-        : Node(node_name, ros_namespace, intra_process_comms) {
+                                       const rclcpp::NodeOptions options)
+        : Node(node_name, ros_namespace, options) {
 
 #ifndef NDEBUG
         rcutils_ret_t res = rcutils_logging_set_logger_level(get_name(), RCUTILS_LOG_SEVERITY_DEBUG);
@@ -35,43 +35,6 @@ namespace stereolabs {
 
         topicPrefix += mMainNode;
         topicPrefix += "/";
-
-        // Parameters
-        initParameters();
-
-        // Initialize subscribers
-        initSubscribers();
-    }
-
-    ZedTfBroadcaster::ZedTfBroadcaster(
-        const std::string& node_name,
-        const std::string& ros_namespace,
-        const std::string& main_node,
-        rclcpp::Context::SharedPtr context,
-        const std::vector<std::string>& arguments,
-        const std::vector<rclcpp::Parameter>& initial_parameters,
-        bool use_global_arguments /*= true*/,
-        bool use_intra_process_comms /*= false*/,
-        bool start_parameter_services /*= true*/)
-        : Node(node_name, ros_namespace, context, arguments, initial_parameters,
-               use_global_arguments, use_intra_process_comms, start_parameter_services) {
-
-#ifndef NDEBUG
-        rcutils_ret_t res = rcutils_logging_set_logger_level(get_name(), RCUTILS_LOG_SEVERITY_DEBUG);
-
-        if (res != RCUTILS_RET_OK) {
-            RCLCPP_INFO(get_logger(), "Error setting DEBUG logger");
-        }
-
-#endif
-
-        RCLCPP_INFO(get_logger(), "**************************************");
-        RCLCPP_INFO(get_logger(), " ZED TF Broadcaster Component created");
-        RCLCPP_INFO(get_logger(), "  * namespace: %s", get_namespace());
-        RCLCPP_INFO(get_logger(), "  * node name: %s", get_name());
-        RCLCPP_INFO(get_logger(), "************************************");
-
-        mMainNode = main_node;
 
         // Parameters
         initParameters();

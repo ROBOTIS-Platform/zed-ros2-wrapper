@@ -42,8 +42,8 @@ namespace stereolabs {
 #endif
 
     ZedCameraComponent::ZedCameraComponent(const std::string& node_name, const std::string& ros_namespace,
-                                           bool intra_process_comms)
-        : rclcpp_lifecycle::LifecycleNode(node_name, ros_namespace, intra_process_comms) {
+                                                rclcpp::NodeOptions options)
+        : rclcpp_lifecycle::LifecycleNode(node_name, ros_namespace, options) {
 
 #ifndef NDEBUG
         std::string logger = ros_namespace.empty() ? "" : ros_namespace + ".";
@@ -62,41 +62,6 @@ namespace stereolabs {
 
         RCLCPP_INFO(get_logger(), "ZED namespace: '%s'", get_namespace());
         RCLCPP_INFO(get_logger(), "ZED node: '%s'", get_name());
-
-        RCLCPP_DEBUG(get_logger(), "[ROS2] Using RMW_IMPLEMENTATION = %s", rmw_get_implementation_identifier());
-
-        RCLCPP_INFO(get_logger(), "Waiting for `CONFIGURE` request...");
-    }
-
-    ZedCameraComponent:: ZedCameraComponent(
-        const std::string& node_name,
-        const std::string& ros_namespace,
-        rclcpp::Context::SharedPtr context,
-        const std::vector<std::string>& arguments,
-        const std::vector<rclcpp::Parameter>& initial_parameters,
-        bool use_global_arguments /*= true*/,
-        bool use_intra_process_comms /*= false*/,
-        bool start_parameter_services /*= true*/)
-        : rclcpp_lifecycle::LifecycleNode(node_name, ros_namespace, context, arguments, initial_parameters,
-                                          use_global_arguments, use_intra_process_comms, start_parameter_services) {
-#ifndef NDEBUG
-        std::string logger = ros_namespace.empty() ? "" : ros_namespace + ".";
-        logger += node_name;
-        rcutils_ret_t res = rcutils_logging_set_logger_level(logger.c_str(), RCUTILS_LOG_SEVERITY_DEBUG);
-
-        if (res != RCUTILS_RET_OK) {
-            RCLCPP_INFO(get_logger(), "Error setting DEBUG logger");
-        } else {
-            RCLCPP_INFO(get_logger(), "Debug Mode enabled");
-        }
-
-#endif
-
-        RCLCPP_INFO(get_logger(), "***********************************");
-        RCLCPP_INFO(get_logger(), " ZED Camera Main Component created");
-        RCLCPP_INFO(get_logger(), "  * namespace: %s", get_namespace());
-        RCLCPP_INFO(get_logger(), "  * node name: %s", get_name());
-        RCLCPP_INFO(get_logger(), "***********************************");
 
         RCLCPP_DEBUG(get_logger(), "[ROS2] Using RMW_IMPLEMENTATION = %s", rmw_get_implementation_identifier());
 
