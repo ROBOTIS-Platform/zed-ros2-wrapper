@@ -195,8 +195,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.svo_file";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mSvoFilepath = paramVal.as_string();
             RCLCPP_INFO(get_logger(), " * SVO: `%s`", mSvoFilepath.c_str());
         }
@@ -204,8 +205,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.camera_model";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedUserCamModel = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -217,8 +219,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.camera_timeout_sec";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mCamTimeoutSec = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -229,8 +232,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.camera_reactivate";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedReactivate = paramVal.as_bool();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -241,8 +245,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.camera_max_reconnect";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mMaxReconnectTemp = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -253,8 +258,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.camera_flip";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mCameraFlip = paramVal.as_bool();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -266,8 +272,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.zed_id";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedId = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -278,8 +285,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.serial_number";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedSerialNumber = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -290,8 +298,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.resolution";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedResol = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -303,8 +312,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.verbose";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVerbose = paramVal.as_bool();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -315,8 +325,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.mat_resize_factor";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_DOUBLE) {
                 mZedMatResizeFactor = paramVal.as_double();
 
@@ -339,8 +350,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.frame_rate";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedFrameRate = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -351,8 +363,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.gpu_id";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mGpuId = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -363,8 +376,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.base_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mBaseFrameId = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -375,8 +389,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.camera_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mCameraFrameId = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -387,8 +402,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.left_camera_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mLeftCamFrameId = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -399,8 +415,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.left_camera_optical_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mLeftCamOptFrameId = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -411,8 +428,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.right_camera_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mRightCamFrameId = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -423,8 +441,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "general.right_camera_optical_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mRightCamOptFrameId = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -442,8 +461,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.auto_exposure";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedAutoExposure = paramVal.as_bool();
 
             if (mZedAutoExposure) {
@@ -458,8 +478,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.exposure";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedExposure = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -470,8 +491,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.gain";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedGain = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -482,8 +504,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.rgb_topic_root";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mRgbTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -495,8 +518,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.left_topic_root";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mLeftTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -507,8 +531,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.right_topic_root";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mRightTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -519,8 +544,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.qos_history";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.history = paramVal.as_int() == 0 ? RMW_QOS_POLICY_HISTORY_KEEP_LAST : RMW_QOS_POLICY_HISTORY_KEEP_ALL;
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -531,8 +557,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.qos_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.depth = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -543,8 +570,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.qos_reliability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.reliability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT :
                                     RMW_QOS_POLICY_RELIABILITY_RELIABLE;
         } else {
@@ -556,8 +584,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "video.qos_durability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.durability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL :
                                    RMW_QOS_POLICY_DURABILITY_VOLATILE;
         } else {
@@ -576,8 +605,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.min_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_DOUBLE) {
                 mZedMinDepth = paramVal.as_double();
 
@@ -602,8 +632,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.max_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_DOUBLE) {
                 mZedMaxDepth = paramVal.as_double();
             } else {
@@ -618,8 +649,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.quality";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedQuality = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -631,8 +663,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.sensing_mode";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedSensingMode = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -644,8 +677,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.confidence";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mZedConfidence = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -656,8 +690,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.depth_stabilization";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthStabilization = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -668,8 +703,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.openni_depth_mode";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mOpenniDepthMode = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -680,8 +716,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.depth_topic_root";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -696,8 +733,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.point_cloud_topic";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPointcloudTopic = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -708,8 +746,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.disparity_topic";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDispTopic = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -720,8 +759,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.confidence_root";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mConfTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -736,8 +776,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.confidence_map_topic";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mConfMapTopic = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -748,8 +789,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.confidence_img_topic";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mConfImgTopic = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -760,8 +802,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.qos_history";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.history = paramVal.as_int() == 0 ? RMW_QOS_POLICY_HISTORY_KEEP_LAST : RMW_QOS_POLICY_HISTORY_KEEP_ALL;
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -772,8 +815,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.qos_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.depth = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -784,8 +828,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.qos_reliability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.reliability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT :
                                     RMW_QOS_POLICY_RELIABILITY_RELIABLE;
         } else {
@@ -797,8 +842,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "depth.qos_durability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.durability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL :
                                    RMW_QOS_POLICY_DURABILITY_VOLATILE;
         } else {
@@ -817,8 +863,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.publish_tf";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                 mPublishTF = paramVal.as_bool();
             } else {
@@ -834,8 +881,9 @@ namespace stereolabs {
             // ------------------------------------------
 
             paramName = "tracking.publish_map_tf";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                     mPublishMapTF = paramVal.as_bool();
                 } else {
@@ -853,8 +901,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.world_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_STRING) {
                 mWorldFrameId = paramVal.as_string();
             } else {
@@ -869,8 +918,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.pose_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_STRING) {
                 mMapFrameId = paramVal.as_string();
             } else {
@@ -885,8 +935,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.odometry_frame";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_STRING) {
                 mOdomFrameId = paramVal.as_string();
             } else {
@@ -905,8 +956,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.pose_smoothing";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                 mPoseSmoothing = paramVal.as_bool();
             } else {
@@ -921,8 +973,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.spatial_memory";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                 mSpatialMemory = paramVal.as_bool();
             } else {
@@ -937,8 +990,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.floor_alignment";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                 mFloorAlignment = paramVal.as_bool();
             } else {
@@ -953,8 +1007,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.two_d_mode";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                 mTwoDMode = paramVal.as_bool();
             } else {
@@ -970,8 +1025,9 @@ namespace stereolabs {
 
         if (mTwoDMode) {
             paramName = "tracking.fixed_z_value";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 if (paramVal.get_type() == rclcpp::PARAMETER_DOUBLE) {
                     mFixedZValue = paramVal.as_double();
                 } else {
@@ -987,8 +1043,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.initial_tracking_pose";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_DOUBLE_ARRAY) {
                 mInitialBasePose = paramVal.as_double_array();
 
@@ -1015,8 +1072,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.pose_topic";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_STRING) {
                 mPoseTopic = paramVal.as_string();
             } else {
@@ -1031,8 +1089,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.odometry_topic";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_STRING) {
                 mOdomTopic = paramVal.as_string();
             } else {
@@ -1047,8 +1106,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.init_odom_with_first_valid_pose";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                 mInitOdomWithPose = paramVal.as_bool();
             } else {
@@ -1063,8 +1123,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.path_pub_rate";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_DOUBLE) {
                 mPathPubRate = paramVal.as_double();
             } else {
@@ -1083,8 +1144,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.path_max_count";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_INTEGER) {
                 mPathMaxCount = paramVal.as_int();
 
@@ -1111,8 +1173,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.publish_pose_covariance";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             if (paramVal.get_type() == rclcpp::PARAMETER_BOOL) {
                 mPublishPoseCov = paramVal.as_bool();
             } else {
@@ -1127,8 +1190,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.qos_history";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.history = paramVal.as_int() == 0 ? RMW_QOS_POLICY_HISTORY_KEEP_LAST : RMW_QOS_POLICY_HISTORY_KEEP_ALL;
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1139,8 +1203,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.qos_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.depth = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1151,8 +1216,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.qos_reliability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.reliability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT :
                                    RMW_QOS_POLICY_RELIABILITY_RELIABLE;
         } else {
@@ -1164,8 +1230,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "tracking.qos_durability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.durability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL :
                                   RMW_QOS_POLICY_DURABILITY_VOLATILE;
         } else {
@@ -1186,8 +1253,9 @@ namespace stereolabs {
             // ------------------------------------------
 
             paramName = "imu.imu_frame";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 mImuFrameId = paramVal.as_string();
             } else {
                 RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1198,8 +1266,9 @@ namespace stereolabs {
             // ------------------------------------------
 
             paramName = "imu.imu_topic_root";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 mImuTopicRoot = paramVal.as_string();
             } else {
                 RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1214,8 +1283,9 @@ namespace stereolabs {
             // ------------------------------------------
 
             paramName = "imu.imu_topic";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 mImuTopic = paramVal.as_string();
             } else {
                 RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1226,8 +1296,9 @@ namespace stereolabs {
             // ------------------------------------------
 
             paramName = "imu.imu_raw_topic";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 mImuRawTopic = paramVal.as_string();
             } else {
                 RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1238,8 +1309,9 @@ namespace stereolabs {
             // ------------------------------------------
 
             paramName = "imu.imu_pub_rate";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 if (paramVal.get_type() == rclcpp::PARAMETER_DOUBLE) {
                     mImuPubRate = paramVal.as_double();
                 } else {
@@ -1254,8 +1326,9 @@ namespace stereolabs {
             // ------------------------------------------
 
             paramName = "imu.imu_sync_frame";
+            this->declare_parameter(paramName);
 
-            if (get_parameter(paramName, paramVal)) {
+            if (this->get_parameter(paramName, paramVal)) {
                 mImuTimestampSync = paramVal.as_bool();
             } else {
                 RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1267,8 +1340,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "imu.qos_history";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mImuQos.history = paramVal.as_int() == 0 ? RMW_QOS_POLICY_HISTORY_KEEP_LAST : RMW_QOS_POLICY_HISTORY_KEEP_ALL;
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1279,8 +1353,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "imu.qos_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mImuQos.depth = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
@@ -1291,8 +1366,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "imu.qos_reliability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mImuQos.reliability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT :
                                   RMW_QOS_POLICY_RELIABILITY_RELIABLE;
         } else {
@@ -1304,8 +1380,9 @@ namespace stereolabs {
         // ------------------------------------------
 
         paramName = "imu.qos_durability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mImuQos.durability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL :
                                  RMW_QOS_POLICY_DURABILITY_VOLATILE;
         } else {

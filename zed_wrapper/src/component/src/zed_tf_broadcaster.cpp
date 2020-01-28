@@ -48,48 +48,54 @@ namespace stereolabs {
         std::string paramName;
 
         paramName = "tracking.odometry_topic";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mOdomTopic = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "tracking.publish_tf";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPublishTf = paramVal.as_bool();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "tracking.publish_map_tf";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPublishMapTf = paramVal.as_bool();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "tracking.qos_history";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.history = paramVal.as_int() == 0 ? RMW_QOS_POLICY_HISTORY_KEEP_LAST : RMW_QOS_POLICY_HISTORY_KEEP_ALL;
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "tracking.qos_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.depth = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "tracking.qos_reliability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.reliability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT :
                                    RMW_QOS_POLICY_RELIABILITY_RELIABLE;
         } else {
@@ -97,8 +103,9 @@ namespace stereolabs {
         }
 
         paramName = "tracking.qos_durability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mPoseQos.durability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL :
                                   RMW_QOS_POLICY_DURABILITY_VOLATILE;
         } else {

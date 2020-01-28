@@ -175,7 +175,7 @@ std::vector<rclcpp::Parameter> createParamsListFromYAMLs(int argc, char* argv[],
             parameters[param.get_name()] = param;
         }
     }
-    
+
     res.reserve(parameters.size());
 
     for (auto& kv : parameters) {

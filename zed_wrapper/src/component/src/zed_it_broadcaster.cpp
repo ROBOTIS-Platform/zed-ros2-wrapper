@@ -76,64 +76,70 @@ namespace stereolabs {
         std::string paramName;
 
         paramName = "video.rgb_topic_root";
-
-        if (get_parameter(paramName, paramVal)) {
+        this->declare_parameter(paramName);
+        if (this->get_parameter(paramName, paramVal)) {
             mRgbTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "video.left_topic_root";
-
-        if (get_parameter(paramName, paramVal)) {
+        this->declare_parameter(paramName);
+        if (this->get_parameter(paramName, paramVal)) {
             mLeftTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "video.right_topic_root";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mRightTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "depth.openni_depth_mode";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mOpenniDepthMode = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "depth.depth_topic_root";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthTopicRoot = paramVal.as_string();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "video.qos_history";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.history = paramVal.as_int() == 0 ? RMW_QOS_POLICY_HISTORY_KEEP_LAST : RMW_QOS_POLICY_HISTORY_KEEP_ALL;
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "video.qos_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.depth = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "video.qos_reliability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.reliability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT :
                                     RMW_QOS_POLICY_RELIABILITY_RELIABLE;
         } else {
@@ -141,8 +147,9 @@ namespace stereolabs {
         }
 
         paramName = "video.qos_durability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mVideoQos.durability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL :
                                    RMW_QOS_POLICY_DURABILITY_VOLATILE;
         } else {
@@ -150,24 +157,27 @@ namespace stereolabs {
         }
 
         paramName = "depth.qos_history";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.history = paramVal.as_int() == 0 ? RMW_QOS_POLICY_HISTORY_KEEP_LAST : RMW_QOS_POLICY_HISTORY_KEEP_ALL;
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "depth.qos_depth";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.depth = paramVal.as_int();
         } else {
             RCLCPP_WARN(get_logger(), "The parameter '%s' is not available, using the default value", paramName.c_str());
         }
 
         paramName = "depth.qos_reliability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.reliability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT :
                                     RMW_QOS_POLICY_RELIABILITY_RELIABLE;
         } else {
@@ -175,8 +185,9 @@ namespace stereolabs {
         }
 
         paramName = "depth.qos_durability";
+        this->declare_parameter(paramName);
 
-        if (get_parameter(paramName, paramVal)) {
+        if (this->get_parameter(paramName, paramVal)) {
             mDepthQos.durability = paramVal.as_int() == 0 ? RMW_QOS_POLICY_DURABILITY_TRANSIENT_LOCAL :
                                    RMW_QOS_POLICY_DURABILITY_VOLATILE;
         } else {
