@@ -35,8 +35,8 @@ zed:
                 rgb_topic_root:             "rgb"
                 left_topic_root:            "left"
                 right_topic_root:           "right"
-                qos_history:                0                                   # '0': KEEP_LAST - '1': KEEP_ALL
-                qos_depth:                  10                                  # Queue size if using KEEP_LAST
+                qos_history:                1                                   # '0': KEEP_LAST - '1': KEEP_ALL
+                qos_depth:                  5                                   # Queue size if using KEEP_LAST
                 qos_reliability:            1                                   # '0': BEST_EFFORT - '1': RELIABLE
                 qos_durability:             1                                   # '0': TRANSIENT_LOCAL - '1': VOLATILE
             depth:
@@ -51,8 +51,8 @@ zed:
                 confidence_root:            "confidence"
                 confidence_img_topic:       "confidence_image"
                 confidence_map_topic:       "confidence_map"
-                qos_history:                0                                   # '0': KEEP_LAST - '1': KEEP_ALL
-                qos_depth:                  10                                  # Queue size if using KEEP_LAST
+                qos_history:                1                                   # '0': KEEP_LAST - '1': KEEP_ALL
+                qos_depth:                  5                                   # Queue size if using KEEP_LAST
                 qos_reliability:            1                                   # '0': BEST_EFFORT - '1': RELIABLE
                 qos_durability:             1                                   # '0': TRANSIENT_LOCAL - '1': VOLATILE
             tracking:
@@ -63,7 +63,7 @@ zed:
                 odometry_frame:             'odom'
                 # odometry_db:              'odometry_db_path'                  # Future use
                 pose_smoothing:             false                               # Enable only if making an AR application
-                spatial_memory:             true
+                spatial_memory:             false
                 floor_alignment:            false
                 two_d_mode:                 false
                 fixed_z_value:              0.0                                 # if 2D mode this is the fixed value assigned to Z coordinate
@@ -71,14 +71,14 @@ zed:
                 pose_topic:                 'pose'
                 odometry_topic:             'odom'
                 init_odom_with_first_valid_pose: true                          # Wait for first valid "map pose" to initialize the odometry starting value
-                path_pub_rate:              2.0
-                path_max_count:             -1                                  # Number of position kept in path vector. '-1' for no limitations
+                path_pub_rate:              10.0
+                path_max_count:             1000                                  # Number of position kept in path vector. '-1' for no limitations
                 publish_pose_covariance:    true
-                qos_history:                0                                   # '0': KEEP_LAST - '1': KEEP_ALL
-                qos_depth:                  10                                  # Queue size if using KEEP_LAST
+                qos_history:                1                                   # '0': KEEP_LAST - '1': KEEP_ALL
+                qos_depth:                  5                                   # Queue size if using KEEP_LAST
                 qos_reliability:            1                                   # '0': BEST_EFFORT - '1': RELIABLE
                 qos_durability:             1                                   # '0': TRANSIENT_LOCAL - '1': VOLATILE
-                
+
 
 
 
