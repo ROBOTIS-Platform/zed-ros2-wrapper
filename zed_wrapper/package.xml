@@ -30,6 +30,7 @@
   <depend>geometry_msgs</depend>
   <depend>stereo_msgs</depend>
   <depend>image_transport</depend>
+  <depend>stereolabs_zed_interfaces</depend>
 
   <build_depend>urdf</build_depend>
 
