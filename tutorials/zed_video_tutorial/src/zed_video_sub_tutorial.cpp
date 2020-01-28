@@ -44,8 +44,7 @@ int main(int argc, char* argv[]) {
 
     g_node = rclcpp::Node::make_shared("zed_video_tutorial");
 
-    // https://github.com/ros2/ros2/wiki/About-Quality-of-Service-Settings
-    rmw_qos_profile_t camera_qos_profile = rmw_qos_profile_sensor_data;
+    auto qos = rclcpp::QoS(rclcpp::QoSInitialization(RMW_QOS_POLICY_HISTORY_KEEP_ALL, 5));
 
     /* Note: it is very important to use a QOS profile for the subscriber that is compatible
      * with the QOS profile of the publisher.
@@ -57,12 +56,14 @@ int main(int argc, char* argv[]) {
      */
 
     auto sub_right = g_node->create_subscription<sensor_msgs::msg::Image>
-                     ("/zed/zed_node/right/image_rect_color", imageRightRectifiedCallback,
-                      rmw_qos_profile_sensor_data);
+                     ("/zed/zed_node/right/image_rect_color",
+                     qos,
+                     imageRightRectifiedCallback);
 
     auto sub_left = g_node->create_subscription<sensor_msgs::msg::Image>
-                    ("/zed/zed_node/left/image_rect_color", imageLeftRectifiedCallback,
-                     rmw_qos_profile_sensor_data);
+                    ("/zed/zed_node/left/image_rect_color",
+                    qos,
+                    imageLeftRectifiedCallback);
 
     rclcpp::spin(g_node);
     rclcpp::shutdown();

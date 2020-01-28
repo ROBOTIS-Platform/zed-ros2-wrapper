@@ -33,9 +33,10 @@ class MinimalLifecycleSubscriber : public rclcpp::Node {
         : Node("zed_lifecycle_tutorial") {
 
         std::string topic = "/zed/zed_node/transition_event";
-
+        auto qos = rclcpp::QoS(rclcpp::QoSInitialization(RMW_QOS_POLICY_HISTORY_KEEP_ALL, 5));
         mSub = create_subscription<lifecycle_msgs::msg::TransitionEvent>(
                    topic,
+                   qos,
         [this](lifecycle_msgs::msg::TransitionEvent::UniquePtr msgPtr) {
             lifecycle_msgs::msg::TransitionEvent msg = *msgPtr.get();
 
@@ -44,7 +45,8 @@ class MinimalLifecycleSubscriber : public rclcpp::Node {
             RCLCPP_INFO(get_logger(), "\t'%s [%d]' -> '%s [%d]'",
                         msg.start_state.label.c_str(), msg.start_state.id,
                         msg.goal_state.label.c_str(), msg.goal_state.id);
-        });
+        }
+        );
 
         RCLCPP_INFO(get_logger(), "Waiting for transition messages on topic `%s`... ",
                     topic.c_str());

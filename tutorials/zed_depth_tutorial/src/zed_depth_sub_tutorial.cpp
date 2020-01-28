@@ -32,9 +32,7 @@ class MinimalDepthSubscriber : public rclcpp::Node {
     MinimalDepthSubscriber()
         : Node("zed_depth_tutorial") {
 
-        // https://github.com/ros2/ros2/wiki/About-Quality-of-Service-Settings
-        rmw_qos_profile_t camera_qos_profile = rmw_qos_profile_sensor_data;
-
+        auto qos = rclcpp::QoS(rclcpp::QoSInitialization(RMW_QOS_POLICY_HISTORY_KEEP_ALL, 5));
         /* Note: it is very important to use a QOS profile for the subscriber that is compatible
          * with the QOS profile of the publisher.
          * The ZED node uses a "rmw_qos_profile_sensor_data" profile for depth data,
@@ -46,8 +44,8 @@ class MinimalDepthSubscriber : public rclcpp::Node {
 
         mSub = create_subscription<sensor_msgs::msg::Image>(
                    "/zed/zed_node/depth/depth_registered",
-                   std::bind(&MinimalDepthSubscriber::depthCallback, this, _1),
-                   camera_qos_profile);
+                   qos,
+                   std::bind(&MinimalDepthSubscriber::depthCallback, this, _1));
     }
 
   protected:
