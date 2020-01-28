@@ -65,7 +65,7 @@ def generate_launch_description():
     # Make the ZED node take the 'configure' transition
     zed_configure_trans_event = EmitEvent(
         event=ChangeState(
-            lifecycle_node_matcher = launch.events.process.matches_action(zed_node),
+            lifecycle_node_matcher = launch.events.matches_action(zed_node),
             transition_id = lifecycle_msgs.msg.Transition.TRANSITION_CONFIGURE,
         )
     )
@@ -73,9 +73,9 @@ def generate_launch_description():
     # Make the ZED node take the 'activate' transition
     zed_activate_trans_event = EmitEvent(
         event = ChangeState(
-            lifecycle_node_matcher = launch.events.process.matches_action(zed_node),
+            lifecycle_node_matcher = launch.events.matches_action(zed_node),
             transition_id = lifecycle_msgs.msg.Transition.TRANSITION_ACTIVATE,
-         )
+        )
     )
 
     # Shutdown event
@@ -174,7 +174,7 @@ def generate_launch_description():
     # Make the ZED node take the 'configure' transition
     zedm_configure_trans_event = EmitEvent(
         event=ChangeState(
-            lifecycle_node_matcher = launch.events.process.matches_action(zedm_node),
+            lifecycle_node_matcher = launch.events.matches_action(zedm_node),
             transition_id = lifecycle_msgs.msg.Transition.TRANSITION_CONFIGURE,
         )
     )
@@ -182,9 +182,9 @@ def generate_launch_description():
     # Make the ZED node take the 'activate' transition
     zedm_activate_trans_event = EmitEvent(
         event = ChangeState(
-            lifecycle_node_matcher = launch.events.process.matches_action(zedm_node),
+            lifecycle_node_matcher = launch.events.matches_action(zedm_node),
             transition_id = lifecycle_msgs.msg.Transition.TRANSITION_ACTIVATE,
-         )
+        )
     )
 
     # Shutdown event

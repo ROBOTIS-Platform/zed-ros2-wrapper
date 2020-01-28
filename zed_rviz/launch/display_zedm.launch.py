@@ -21,11 +21,11 @@ import lifecycle_msgs.msg
 
 def generate_launch_description():
 
-    camera_model = 'zedm' 
+    camera_model = 'zedm'
 
     # URDF file to be loaded by Robot State Publisher
     urdf = os.path.join(get_package_share_directory('stereolabs_zed'), 'urdf', camera_model + '.urdf')
-    
+
     # ZED Configurations to be loaded by ZED Node
     config_common = os.path.join(get_package_share_directory('stereolabs_zed'), 'config', 'common.yaml')
 
@@ -70,13 +70,13 @@ def generate_launch_description():
         node_executable = 'rviz2',
         output = 'screen',
         arguments = ['-d', rviz_config,
-                     '-s', sl_logo]
+                    '-s', sl_logo]
     )
 
     # Make the ZED node take the 'configure' transition
     zed_configure_trans_event = EmitEvent(
         event=ChangeState(
-            lifecycle_node_matcher = launch.events.process.matches_action(zed_node),
+            lifecycle_node_matcher = launch.events.matches_action(zed_node),
             transition_id = lifecycle_msgs.msg.Transition.TRANSITION_CONFIGURE,
         )
     )
@@ -84,9 +84,9 @@ def generate_launch_description():
     # Make the ZED node take the 'activate' transition
     zed_activate_trans_event = EmitEvent(
         event = ChangeState(
-            lifecycle_node_matcher = launch.events.process.matches_action(zed_node),
+            lifecycle_node_matcher = launch.events.matches_action(zed_node),
             transition_id = lifecycle_msgs.msg.Transition.TRANSITION_ACTIVATE,
-         )
+        )
     )
 
     # Shutdown event
