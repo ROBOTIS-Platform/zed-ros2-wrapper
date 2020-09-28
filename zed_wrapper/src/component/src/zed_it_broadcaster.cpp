@@ -7,6 +7,20 @@ using namespace std::placeholders;
 
 namespace stereolabs {
 
+ #define RCLCPP_INFO_STREAM(logger, stream_arg) \
+   do { \
+     static_assert( \
+       ::std::is_same<typename std::remove_cv<typename std::remove_reference<decltype(logger)>::type>::type, \
+       typename ::rclcpp::Logger>::value, \
+       "First argument to logging macros must be an rclcpp::Logger"); \
+  \
+     std::stringstream ss; \
+     ss << stream_arg; \
+     RCUTILS_LOG_INFO_NAMED( \
+       logger.get_name(), \
+       "%s", rclcpp::get_c_string(ss.str())); \
+   } while (0)
+
 ZedItBroadcaster::ZedItBroadcaster(const std::string& node_name /*= "zed_it_broadcaster"*/,
                                    const std::string& ros_namespace /*= "zed"*/,
                                    const std::string& main_node,
