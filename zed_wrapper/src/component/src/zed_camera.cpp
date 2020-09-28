@@ -41,6 +41,62 @@ namespace stereolabs {
 #define RAD2DEG 57.295777937
 #endif
 
+ #define RCLCPP_DEBUG_STREAM(logger, stream_arg) \
+   do { \
+     static_assert( \
+       ::std::is_same<typename std::remove_cv<typename std::remove_reference<decltype(logger)>::type>::type, \
+       typename ::rclcpp::Logger>::value, \
+       "First argument to logging macros must be an rclcpp::Logger"); \
+  \
+     std::stringstream ss; \
+     ss << stream_arg; \
+     RCUTILS_LOG_DEBUG_NAMED( \
+       logger.get_name(), \
+       "%s", rclcpp::get_c_string(ss.str())); \
+   } while (0)
+
+ #define RCLCPP_WARN_STREAM(logger, stream_arg) \
+   do { \
+     static_assert( \
+       ::std::is_same<typename std::remove_cv<typename std::remove_reference<decltype(logger)>::type>::type, \
+       typename ::rclcpp::Logger>::value, \
+       "First argument to logging macros must be an rclcpp::Logger"); \
+  \
+     std::stringstream ss; \
+     ss << stream_arg; \
+     RCUTILS_LOG_WARN_NAMED( \
+       logger.get_name(), \
+       "%s", rclcpp::get_c_string(ss.str())); \
+   } while (0)
+
+ #define RCLCPP_INFO_STREAM(logger, stream_arg) \
+   do { \
+     static_assert( \
+       ::std::is_same<typename std::remove_cv<typename std::remove_reference<decltype(logger)>::type>::type, \
+       typename ::rclcpp::Logger>::value, \
+       "First argument to logging macros must be an rclcpp::Logger"); \
+  \
+     std::stringstream ss; \
+     ss << stream_arg; \
+     RCUTILS_LOG_INFO_NAMED( \
+       logger.get_name(), \
+       "%s", rclcpp::get_c_string(ss.str())); \
+   } while (0)
+
+ #define RCLCPP_ERROR_STREAM(logger, stream_arg) \
+   do { \
+     static_assert( \
+       ::std::is_same<typename std::remove_cv<typename std::remove_reference<decltype(logger)>::type>::type, \
+       typename ::rclcpp::Logger>::value, \
+       "First argument to logging macros must be an rclcpp::Logger"); \
+  \
+     std::stringstream ss; \
+     ss << stream_arg; \
+     RCUTILS_LOG_ERROR_NAMED( \
+       logger.get_name(), \
+       "%s", rclcpp::get_c_string(ss.str())); \
+   } while (0)
+
 ZedCamera::ZedCamera(const std::string& node_name, const std::string& ros_namespace,
                                        const rclcpp::NodeOptions &node_opt)
     : rclcpp_lifecycle::LifecycleNode(node_name, ros_namespace, node_opt)
